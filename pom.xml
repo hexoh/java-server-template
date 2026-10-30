@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nova</groupId>
+    <artifactId>nova-platform</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>nova-platform</name>
+    <description>Nova Backend Platform</description>
+
+    <modules>
+        <!-- platform -->
+        <module>platform/nova-common</module>
+        <module>platform/nova-framework</module>
+        <module>platform/nova-starter-web</module>
+        <module>platform/nova-starter-security</module>
+        <module>platform/nova-starter-mybatis</module>
+        <module>platform/nova-starter-redis</module>
+        <module>platform/nova-starter-openapi</module>
+
+        <!-- business modules -->
+        <module>modules/nova-system</module>
+        <module>modules/nova-auth</module>
+        <module>modules/nova-meeting</module>
+        <module>modules/nova-file</module>
+
+        <!-- bootstrap -->
+        <module>bootstrap/nova-server</module>
+    </modules>
+
+    <properties>
+        <java.version>25</java.version>
+        <!-- 指定 Java 编译版本（可选） 不用写 source/target, SpringBoot 会根据java.version自动处理-->
+        <!-- <maven.compiler.source>${java.version}</maven.compiler.source>-->
+        <!-- <maven.compiler.target>${java.version}</maven.compiler.target>-->
+        <!--<maven.compiler.release>${java.version}</maven.compiler.release>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <spring-boot.version>4.0.9</spring-boot.version>
+        <mybatis-spring-boot.version>3.0.5</mybatis-spring-boot.version>
+        <springdoc.version>3.2.0</springdoc.version>
+        <knife4j.version>4.5.0</knife4j.version>
+        <mybatis-plus.version>3.5.18</mybatis-plus.version>
+        <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot 统一依赖版本管理 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!-- Knife4j 的 SpringDoc 增强启动器 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version> <!-- 请使用最新版本 -->
+            </dependency>
+
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- 按需引入：只有用多租户/动态表名等才需要 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-jsqlparser</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <release>${java.version}</release>
+                        <parameters>true</parameters>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

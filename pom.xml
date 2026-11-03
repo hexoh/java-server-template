@@ -17,19 +17,19 @@
         <module>platform/nova-common</module>
         <module>platform/nova-framework</module>
         <module>platform/nova-starter-web</module>
-        <module>platform/nova-starter-security</module>
-        <module>platform/nova-starter-mybatis</module>
-        <module>platform/nova-starter-redis</module>
-        <module>platform/nova-starter-openapi</module>
+<!--        <module>platform/nova-starter-security</module>-->
+<!--        <module>platform/nova-starter-mybatis</module>-->
+<!--        <module>platform/nova-starter-redis</module>-->
+<!--        <module>platform/nova-starter-openapi</module>-->
 
         <!-- business modules -->
-        <module>modules/nova-system</module>
-        <module>modules/nova-auth</module>
-        <module>modules/nova-meeting</module>
-        <module>modules/nova-file</module>
+<!--        <module>modules/nova-system</module>-->
+<!--        <module>modules/nova-auth</module>-->
+<!--        <module>modules/nova-meeting</module>-->
+<!--        <module>modules/nova-file</module>-->
 
         <!-- bootstrap -->
-        <module>bootstrap/nova-server</module>
+<!--        <module>bootstrap/nova-server</module>-->
     </modules>
 
     <properties>
@@ -47,6 +47,7 @@
         <knife4j.version>4.5.0</knife4j.version>
         <mybatis-plus.version>3.5.18</mybatis-plus.version>
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
+        <lombok.version>1.18.48</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -86,6 +87,13 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
